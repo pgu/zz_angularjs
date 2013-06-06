@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div style="font-size:27px;line-height:1">
+    <canvas id="pgu_canvas" width="27" height="27" style="margin-right:2px"></canvas>
+    Guilcher Pascal
+</div>
+<p>
+    <a href="http://sfeir-logo.appspot.com/" target="_blank"><img
+            src="http://sfeir-logo.appspot.com/img/favicon.ico"></img></a>
+    <a href="https://github.com/pgu" target="_blank"><img
+            src="http://cdn-careers.sstatic.net/careers/Img/github-icon.png"></img></a>
+    <a href="https://twitter.com/_pgu" target="_blank"><img
+            src="https://twitter.com/images/resources/twitter-bird-light-bgs.png" style="width:20px;height:20px"></img></a>
+    <a href="http://fr.linkedin.com/pub/pascal-guilcher/2/3b1/955" target="_blank"><img
+            src="http://linkedin.com/favicon.ico"></img></a>
+</p>
+
+<p>
+    <a href="http://www.groupe-adeo.com/" target="_blank"><img
+            src="http://m.c.lnkd.licdn.com/media/p/1/000/024/103/11b88f5.png" style="width:60px;height:40px;"></img></a>
+</p>
+<script>
+    (function () {
+        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        window.requestAnimationFrame = requestAnimationFrame;
+    })();
+
+    (function () {
+
+        var my_face = new Image();
+        my_face.src = "http://www.gravatar.com/avatar/0f913762808ef14ed1a0dc88cb4f14bb?s=23";
+
+        var hue = 1;
+        var dir = 1;
+
+        var start = Date.now();
+
+        var canvas = document.getElementById('pgu_canvas');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+
+            function step(timestamp) {
+
+                //ctx.fillStyle = "rgb(" + red +","+ green +","+ blue + ")";
+                ctx.fillStyle = 'hsl(' + hue + ', 99%, 50%)';
+                ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                ctx.drawImage(my_face, 2, 2);
+
+                hue += 1 * dir;
+
+                if (hue <= 0 || hue >= 360) dir = -dir;
+
+                requestAnimationFrame(step);
+            }
+
+            requestAnimationFrame(step);
+        }
+
+    })();
+</script>
+</body>
+</html>
