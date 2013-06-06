@@ -5,6 +5,6 @@ function PersonCtrl($scope) {
     $scope.save = function() {
         var p = $scope.person;
 
-        window.DB_persons[p.id] = p;
+        window.DB_persons[p.id] = JSON.parse(JSON.stringify(p));
     }
 }
