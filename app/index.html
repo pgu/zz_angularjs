@@ -75,7 +75,7 @@
             } else if (personId >= DB_persons.length) {
                 person = null;
             } else {
-                person = DB_persons[personId];
+                person = JSON.parse(JSON.stringify(DB_persons[personId]));
                 person.id = parseInt(personId, 10);
             }
 

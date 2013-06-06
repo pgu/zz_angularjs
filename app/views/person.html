@@ -1,4 +1,14 @@
 <div>
     Person
     <p>{{person.name}}</p>
+
+    <p>
+        <label>Name:</label>
+        <input type="text" ng-model="person.name" placeholder="Enter a name here">
+    </p>
+
+    <p>
+        <a class="btn btn-success" ng-click="save()">Save</a>
+    </p>
+
 </div>
