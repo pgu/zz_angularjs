@@ -34,10 +34,10 @@
             <div class="span12">
                 <a class="btn btn-success" ng-href="#/persons/{{person.id}}">Person</a>
                 <a class="btn btn-primary" ng-href="#/persons/{{person.id}}/friends" ng-show="person.id > -1">Friends</a>
-                <a class="btn btn-inverse" ng-click="changePerson(0)" ng-show="person.id != 0">John</a>
-                <a class="btn btn-inverse" ng-click="changePerson(1)" ng-show="person.id != 1">Jane</a>
-                <a class="btn btn-inverse" ng-click="changePerson(2)" ng-show="person.id != 2">Pierre</a>
-                <a class="btn btn-inverse" ng-click="changePerson(3)" ng-show="person.id != 3">Marie</a>
+                <a class="btn btn-inverse" ng-click="changePerson(0)" ng-show="person.id != 0">Person 0</a>
+                <a class="btn btn-inverse" ng-click="changePerson(1)" ng-show="person.id != 1">Person 1</a>
+                <a class="btn btn-inverse" ng-click="changePerson(2)" ng-show="person.id != 2">Person 2</a>
+                <a class="btn btn-inverse" ng-click="changePerson(3)" ng-show="person.id != 3">Person 3</a>
             </div>
         </div>
         <div class="row">
@@ -46,12 +46,20 @@
     </div>
 
     <script>
-        window.DB_persons = [
-            {name: 'John', age:30, friends: [{name: 'J1'}, {name: 'J2'}]},
-            {name: 'Jane', age:31, friends: [{name: 'Ja1'}, {name: 'Ja2'}]},
-            {name: 'Pierre', age:55, friends: [{name: 'P1'}, {name: 'P2'}]},
-            {name: 'Marie', age:56, friends: [{name: 'M1'}, {name: 'M2'}]}
-        ]
+
+        var db_persons = localStorage['DB_persons'];
+        if (!db_persons) {
+
+            db_persons = JSON.stringify([
+                {name: 'John', age:30, friends: [{name: 'J1'}, {name: 'J2'}]},
+                {name: 'Jane', age:31, friends: [{name: 'Ja1'}, {name: 'Ja2'}]},
+                {name: 'Pierre', age:55, friends: [{name: 'P1'}, {name: 'P2'}]},
+                {name: 'Marie', age:56, friends: [{name: 'M1'}, {name: 'M2'}]}
+            ]);
+            localStorage['DB_persons'] = db_persons;
+        }
+
+        window.DB_persons = JSON.parse(db_persons);
     </script>
 
     <script src="components/angular/angular.js"></script>
