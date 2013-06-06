@@ -34,10 +34,10 @@
             <div class="span12">
                 <a class="btn btn-success" ng-href="#/persons/{{person.id}}">Person</a>
                 <a class="btn btn-primary" ng-href="#/persons/{{person.id}}/friends" ng-show="person.id > -1">Friends</a>
-                <a class="btn btn-inverse" ng-href="#/persons/0" ng-show="person.id != 0">John</a>
-                <a class="btn btn-inverse" ng-href="#/persons/1" ng-show="person.id != 1">Jane</a>
-                <a class="btn btn-inverse" ng-href="#/persons/2" ng-show="person.id != 2">Pierre</a>
-                <a class="btn btn-inverse" ng-href="#/persons/3" ng-show="person.id != 3">Marie</a>
+                <a class="btn btn-inverse" ng-click="changePerson(0)" ng-show="person.id != 0">John</a>
+                <a class="btn btn-inverse" ng-click="changePerson(1)" ng-show="person.id != 1">Jane</a>
+                <a class="btn btn-inverse" ng-click="changePerson(2)" ng-show="person.id != 2">Pierre</a>
+                <a class="btn btn-inverse" ng-click="changePerson(3)" ng-show="person.id != 3">Marie</a>
             </div>
         </div>
         <div class="row">
@@ -63,7 +63,7 @@
     <script src="scripts/app.js"></script>
 
     <script>
-        function MainCtrl($scope, $location) {
+        function MainCtrl($scope, $location, $window) {
             console.log('main-ctrl');
 
             var personId = $location.$$url.replace('/persons/', '');
@@ -86,6 +86,12 @@
 
             console.log(person);
             $scope.person = person;
+
+            $scope.changePerson = function(personId) {
+                $window.location = '/#/persons/' + personId;
+                $window.location.reload();
+            }
+
         }
     </script>
 
