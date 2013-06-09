@@ -2,6 +2,7 @@
 <html>
 <head>
     <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div style="font-size:27px;line-height:1">
@@ -23,6 +24,45 @@
     <a href="http://www.groupe-adeo.com/" target="_blank"><img
             src="http://m.c.lnkd.licdn.com/media/p/1/000/024/103/11b88f5.png" style="width:60px;height:40px;"></img></a>
 </p>
+
+<style>
+    #neon h1 {
+        text-align: center;
+        font-family: "Droid Sans", sans-serif;
+        font-size: 200px;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+    }
+</style>
+<div id="neon" style="background-color: #000000">
+    <h1>Neon</h1>
+</div>
+
+<div>
+    <canvas id="canvas_test" width="100" height="100" ></canvas>
+</div>
+
+<div>
+    &#2708;
+</div>
+<script>
+    var canvas_test = document.getElementById('canvas_test');
+    if (canvas_test.getContext) {
+        var ctx = canvas_test.getContext("2d");
+
+        var text = 'Hello world!';
+        var blur = 10;
+        var width = ctx.measureText(text).width + blur * 2;
+        ctx.textBaseline = 'top';
+        ctx.shadowColor = '#000';
+        ctx.shadowOffsetX = width;
+        ctx.shadowOffsetY = 0;
+        ctx.shadowBlur = blur;
+        ctx.fillText(text, -width, 0);
+    }
+</script>
+
 <script>
     (function () {
         var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
