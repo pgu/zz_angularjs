@@ -5,6 +5,70 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<style>
+    .tron_ext_ice {
+        height: 100px;
+        width: 100px;
+        margin: 10px auto ;
+        border-radius: 2px;
+        border: 10px solid white;
+        /*Formal syntax: none | [inset? && [ <offset-x> <offset-y> <blur-radius>? <spread-radius>? <color>? ] ]#*/
+        /*-webkit-box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px #22afca, 0 0 70px #22afca, 0 0 80px #22afca, 0 0 100px #22afca, 0 0 150px #22afca, inset 0 0 10px white;*/
+        -webkit-box-shadow: 0 0 10px white,
+                            0 0 20px white,
+                            0 0 30px #22afca,
+                            0 0 35px #22afca,
+                            0 0 45px #22afca,
+                            0 0 60px #22afca,
+                            inset 0 0 10px white,
+                            inset 0 0 20px white,
+                            inset 0 0 30px #22afca,
+                            inset 0 0 40px #22afca,
+                            inset 0 0 45px #22afca
+                            ;
+        /*-webkit-box-shadow: 0 0 10px white,*/
+                            /*0 0 20px white,*/
+                            /*0 0 30px white,*/
+                            /*0 0 40px #22afca,*/
+                            /*0 0 70px #22afca,*/
+                            /*0 0 80px #22afca,*/
+                            /*0 0 100px #22afca,*/
+                            /*0 0 150px #22afca,*/
+                            /*inset 0 0 10px white,*/
+                            /*inset 0 0 20px white,*/
+                            /*inset 0 0 30px #22afca,*/
+                            /*inset 0 0 40px #22afca,*/
+                            /*inset 0 0 45px #22afca*/
+                            /*;*/
+        /*-webkit-box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;*/
+        /*-webkit-box-shadow: #22afca 0 0 50px;*/
+    }
+    .tron_ext_fire {
+        height: 100px;
+        width: 100px;
+        margin: 50px auto ;
+        border-radius: 2px;
+        border: 10px solid white;
+        -webkit-box-shadow: 0 0 10px #eecd30,
+                            0 0 20px #eecd30,
+                            0 0 30px #fe601e,
+                            0 0 35px #fe601e,
+                            0 0 45px #fe601e,
+                            0 0 60px #fe601e,
+                            inset 0 0 10px #eecd30,
+                            inset 0 0 20px #eecd30,
+                            inset 0 0 30px #fe601e,
+                            inset 0 0 40px #fe601e,
+                            inset 0 0 45px #fe601e
+                            ;
+    }
+</style>
+<div style="height:500px;width:100%;background-color: #000;padding-top:50px;margin-top:50px;">
+    <div class="tron_ext_ice"></div>
+    <div class="tron_ext_fire"></div>
+</div>
+
 <div style="font-size:27px;line-height:1">
     <canvas id="pgu_canvas" width="27" height="27" style="margin-right:2px"></canvas>
     Guilcher Pascal
