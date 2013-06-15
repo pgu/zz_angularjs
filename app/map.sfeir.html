@@ -166,6 +166,33 @@
         }
 
     })();
+
+    var back_service = {name: 'back_service'};
+    var the_service = (function(back_service) {
+
+        var the_element = function(name) {
+            this.name = name;
+        }
+        the_element.prototype.doodle = function() {
+            console.log('doodle > ' + this.name + ' and ' + back_service.name);
+        }
+
+        return {
+            create: function(name) {
+                return new the_element(name);
+            }
+        }
+    })(back_service);
+
+    var gold = the_service.create('gold');
+    var silver = the_service.create('silver');
+
+    gold.doodle();
+    silver.doodle();
+
+    var copper = new the_element('copper');
+    copper.doodle();
+
 </script>
 </body>
 </html>
