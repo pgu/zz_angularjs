@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="styles/bootstrap.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
+    <script src="http://underscorejs.org/underscore.js"></script>
   </head>
   <body ng-app="zzAngularjsApp" ng-controller="MainCtrl">
     <!--[if lt IE 7]>
@@ -43,6 +45,16 @@
         <div class="row">
             <div class="span12" ng-view></div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="span12">
+                <button ng-click="launchRequest()">Launch</button>
+                <hr>
+                <ul ng-repeat="resp in responses">
+                    <li>{{resp}}</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -71,8 +83,9 @@
     <script src="scripts/app.js"></script>
 
     <script>
-        function MainCtrl($scope, $location, $window) {
+        function MainCtrl($scope, $location, $window, $http) {
             console.log('main-ctrl');
+            $scope.responses = ['A', 'B'];
 
             var personId = $location.$$url.replace('/persons/', '');
             var person = null;
@@ -99,6 +112,36 @@
                 $window.location = '/#/persons/' + personId;
                 $window.location.reload();
             }
+
+            // test with http
+            var launchInternal = function(url) {
+                return $http
+                    .get(url)
+                    .then(function(response) {
+                        $scope.responses.push('FIRST THEN');
+                        console.log('first');
+                        console.log(response.data);
+
+                        var arr = _.chain(_.range(1000000))
+                            .shuffle()
+                            .sortBy(function(num){ return Math.sin(num); })
+                            .map(function(num) {return num * 3;})
+                            .first(10)
+                            .value();
+
+                        console.log(arr);
+
+                    });
+            };
+
+            $scope.launchRequest = function() {
+                $scope.responses = [];
+                launchInternal('/person.json')
+                    .then(function() {
+                        $scope.responses.push('SECOND THEN');
+                        console.log('second');
+                    });
+            };
 
         }
     </script>
