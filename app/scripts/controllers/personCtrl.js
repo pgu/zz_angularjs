@@ -7,5 +7,5 @@ function PersonCtrl($scope) {
 
         window.DB_persons[p.id] = JSON.parse(JSON.stringify(p));
         localStorage['DB_persons'] = JSON.stringify(window.DB_persons);
-    }
+    };
 }
