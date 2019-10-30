@@ -2153,7 +2153,7 @@ angular.module('zzAngularjsApp').factory('MyService', function() {
 
     start = Date.now();
     var kyouikus = _.reduce(_.range(1, 7), function(memo, grade) {
-        return memo.concat(angular.copy(jouyousByGrades[grade]));
+        return memo.concat(jouyousByGrades[grade]);
     }, []);
     end = Date.now();
     console.log('kyouikus: ' + (end - start));
@@ -2192,4 +2192,9 @@ angular.module('zzAngularjsApp').factory('MyService', function() {
             return r;
         }
     }
+
+//    get jouyous: 39         64
+//    get others: 22            10
+//    get kyouikus: 31          13
+
 })
